@@ -1,0 +1,2 @@
+chmod   //改变权限　　chmod  777  file   rwx rwx rwx 
+
