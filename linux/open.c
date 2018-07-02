@@ -32,8 +32,18 @@ int main (int argc ,char * argv[])
     }
     else
     {
-        printf("fd = %d\n",fd);
-        write(fd,argv[2],strlen(argv[2]));
-    }
+        if(argc == 3)
+        {
+        
+            printf("fd = %d\n",fd);
+            write(fd,argv[2],strlen(argv[2]));
+        }
+        else if (argc == 2)
+        {
+            write(fd,"hello",5);
+        }
+
+        }
+        printf("\n");
     close(fd);
 }
