@@ -17,6 +17,8 @@ int main (int argc ,char * argv[])
 {
 
     int fd;
+    int len = 0,i=0;
+    char buf[1024];
     if (argc<2)
     {
         printf("./app filename");
@@ -42,8 +44,12 @@ int main (int argc ,char * argv[])
         {
             write(fd,"hello",5);
         }
+        //len = read(STDIN_FILENO,buf,sizeof(buf));
+        //printf("len = %d",len);
+        //write(STDOUT_FILENO,buf,len);
 
-        }
+
+    }
         printf("\n");
     close(fd);
 }
