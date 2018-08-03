@@ -1,0 +1,41 @@
+ubuntu 与 Windows 时间不同步问题
+
+sudo apt-get install ntpdate
+sudo ntpdate time.windows.com
+sudo hwclock --localtime --systohc
+
+
+修改 grub 启动顺序及等待时间和背景
+
+sudo gedit /etc/default/grub
+sudo update-grub
+
+要更改 GRUB 背景图片非常简单，只需将准备好的图片复制到 /boot/grub/ 路径即可。
+
+GRUB 仅支持 265 色 JPG/JPEG 格式图片，所以建议大家使用 PNG 图片。
+
+
+安装网易云 
+
+下载  安装  依赖问题用
+sudo apt-get -f install 
+
+不能打开加 sudo 
+用户目录下
+ cd .cache
+sudo chmod -R 777 netease-cloud-music 
+
+
+安装谷歌浏览器
+sudo wget https://repo.fdzh.org/chrome/google-chrome.list -P /etc/apt/sources.list.d/
+ wget -q -O - https://dl.google.com/linux/linux_signing_key.pub  | sudo apt-key add -
+sudo apt-get update
+  sudo apt-get install google-chrome-stable
+/usr/bin/google-chrome-stable
+
+
+
+
+
+
+

@@ -5,7 +5,7 @@ void main()
 {
 	char str[50];
 	int len,i=0,j=0;
-	gets_s(str);
+	gets(str);
 	len = strlen(str);
 	printf( "字符串的长度为 %d\n",len );
 
