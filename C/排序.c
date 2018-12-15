@@ -24,6 +24,7 @@ int find(int *a,int low ,int high)
 	{
 		while(low<high && a[high]>=val)
 		high--;
+	
 		a[low]=a[high];
 		
 		while(low<high && a[low]<=val)

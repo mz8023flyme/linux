@@ -1,0 +1,60 @@
+﻿开发板挂载网络根文件系统（网络挂载根文件系统前要确保Ubuntu能ping通开发板）
+mount -t nfs -o nolock,vers=2 192.168.100.9:/work/nfs_root/ /mnt
+mount -t nfs -o nolock,vers=2 192.168.100.9:/work/nfs_root/mydrv/ /mnt
+
+启动参数
+set bootargs noinitrd root=/dev/nfs nfsroot=192.168.100.9:/work/nfs_root/first_fs  ip=192.168.100.17:192.168.100.9:192.168.100.1:255.255.255.0::eth0:off init=/linuxrc console=ttySAC0
+
+set bootargs noinitrd root=/dev/nfs nfsroot=192.168.100.9:/learn/first_fs  ip=192.168.100.17:192.168.100.9:192.168.100.1:255.255.255.0::eth0:off init=/linuxrc console=ttySAC0
+
+默认参数
+set bootargs noinitrd root=/dev/mtdblock3 rootfstype=jffs2 init=/linuxrc console=ttySAC0 
+
+printk(" %s %d\n",  __FUNCTION__, __LINE__);
+
+用服务器内核启动
+nfs 30000000 192.168.100.9:/work/nfs_root/uImage_nohid;bootm 30000000
+nfs 30000000 192.168.100.9:/work/nfs_root/uImage_nonand;bootm 30000000
+nfs 30000000 192.168.100.9:/work/nfs_root/uImage_nand;
+nfs 30000000 192.168.100.9:/work/nfs_root/uImage_nand;bootm 30000000
+nfs 30000000 192.168.100.9:/work/nfs_root/zImage_nand;bootm 30000000
+
+查看已经安装的设备驱动
+cat /proc/devices
+
+查看已经安装的中断
+cat /proc/interrupts
+
+开启中断
+exec 5</dev/eint
+关闭中断
+exec 5<&-
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
