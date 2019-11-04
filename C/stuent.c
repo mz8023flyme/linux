@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <malloc.h>
 #include <conio.h>
+#include <windows.h>
 
 typedef struct student {
 	
@@ -293,9 +294,10 @@ sw:	printf("没有这个学号信息，是否改为添加？\n");
 void del_stu(void)
 {
 	int num=0;
-	printf("学号:");
+	printf("请输入需要删除的学号:");
 	scanf("%d",&num);
-	pstu p=head->next,q=NULL;
+	pstu p=head,q=NULL;
+	head->num=-1;
 	while(p!=NULL)
 	{
 		if(p->num==num)
@@ -303,6 +305,8 @@ void del_stu(void)
 			q->next=p->next;
 			free(p);
 			cnt--;
+			printf("删除成功！\n");
+			Sleep(1000);
 			return;
 		}
 		q=p;
@@ -483,6 +487,7 @@ int main()
 	
 	while(1)
 	{
+		
 		system("cls");//清屏
 		mian_display();
 		c=getch();
