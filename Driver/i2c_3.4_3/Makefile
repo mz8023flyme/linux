@@ -1,4 +1,4 @@
-KERN_DIR = /work/system/linux-2.6.22.6
+KERN_DIR = /work/system/linux-3.4.2
 
 all:
 	make -C $(KERN_DIR) M=`pwd` modules 
@@ -7,4 +7,5 @@ clean:
 	make -C $(KERN_DIR) M=`pwd` modules clean
 	rm -rf modules.order
 
-obj-m	+= button_input.o
+obj-m	+= i2c_24dev.o
+obj-m	+= i2c_24drv.o

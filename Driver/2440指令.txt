@@ -1,23 +1,36 @@
 ﻿开发板挂载网络根文件系统（网络挂载根文件系统前要确保Ubuntu能ping通开发板）
 mount -t nfs -o nolock,vers=2 192.168.100.9:/work/nfs_root/ /mnt
 mount -t nfs -o nolock,vers=2 192.168.100.9:/work/nfs_root/mydrv/ /mnt
-
+mount -t nfs -o nolock,vers=2 192.168.1.103:/work/nfs_root/mydrv/ /mnt
 启动参数
 set bootargs noinitrd root=/dev/nfs nfsroot=192.168.100.9:/work/nfs_root/first_fs  ip=192.168.100.17:192.168.100.9:192.168.100.1:255.255.255.0::eth0:off init=/linuxrc console=ttySAC0
+
+set bootargs noinitrd root=/dev/nfs nfsroot=192.168.100.9:/work/nfs_root/fs_mini_mdev_new  ip=192.168.100.17:192.168.100.9:192.168.100.1:255.255.255.0::eth0:off init=/linuxrc console=ttySAC0,115200
 
 set bootargs noinitrd root=/dev/nfs nfsroot=192.168.100.9:/learn/first_fs  ip=192.168.100.17:192.168.100.9:192.168.100.1:255.255.255.0::eth0:off init=/linuxrc console=ttySAC0
 
 默认参数
-set bootargs noinitrd root=/dev/mtdblock3 rootfstype=jffs2 init=/linuxrc console=ttySAC0 
+set bootargs noinitrd root=/dev/mtdblock3 rootfstype=yaffs2 init=/linuxrc console=ttySAC0,115200
 
 printk(" %s %d\n",  __FUNCTION__, __LINE__);
 
+ setenv ipaddr 192.168.1.17      //设置开发板IP
+
 用服务器内核启动
 nfs 30000000 192.168.100.9:/work/nfs_root/uImage_nohid;bootm 30000000
-nfs 30000000 192.168.100.9:/work/nfs_root/uImage_nonand;bootm 30000000
-nfs 30000000 192.168.100.9:/work/nfs_root/uImage_nand;
-nfs 30000000 192.168.100.9:/work/nfs_root/uImage_nand;bootm 30000000
-nfs 30000000 192.168.100.9:/work/nfs_root/zImage_nand;bootm 30000000
+
+nfs 30000000 192.168.1.101:/work/nfs_root/uImage_lcd;bootm 30000000
+
+安装arm-linxu-gcc4.3.2后不能编译的问题  
+先  sudo -s 切换到root 用户
+在 export PATH=$PATH:/usr/local/arm/4.3.2/bin 添加环境变量
+
+安装三期arm-linux-gcc3.4教程
+tar -xvf arm-linux-gcc3.4 -C /
+export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/arm/4.3.2/bin
+
+内核打补丁
+ patch -p1 < ../linux-2.6.22.6_jz2440.patch
 
 查看已经安装的设备驱动
 cat /proc/devices

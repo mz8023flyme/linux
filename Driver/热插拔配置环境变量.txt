@@ -1,0 +1,30 @@
+正则表达式
+
+在 /etc 下编辑 mdev.conf 文件
+@ : 在设备节点创建之后
+$ : 在设备节点删除之前
+* : 在设备节点创建之后 和 在设备节点删除之前
+
+例如在安装LED驱动时打印安装信息和权限
+安装时自动修改权限和打印创建的设备节点
+leds?[123]? 0:0 777 @ echo create /dev/$MDEV > /dev/console
+
+leds?[123]? 0:0 777 $ echo remove /dev/$MDEV > /dev/console
+
+leds?[123]? 0:0 777 * if [ $ACTION = "add" ]; then echo create /dev/$MDEV > /dev/console; else echo remove /dev/$MDEV > /dev/console; fi   
+
+
+把命令写入一个脚本
+#!/bin/sh
+if [ $ACTION = "add" ];
+then
+	echo create /dev/$MDEV > /dev/console;
+else
+	echo remove /dev/$MDEV > /dev/console;
+fi
+
+U 盘自动挂载
+sda[1-9]+ 0:0 777 * if [ $ACTION = "add" ]; then mount /dev/$MDEV /mut; else umount /mnt; fi
+
+
+
