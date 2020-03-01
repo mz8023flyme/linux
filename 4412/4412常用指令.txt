@@ -1,0 +1,15 @@
+mount -t nfs -o nolock 192.168.31.228:/home/life/nfs /mnt
+
+
+
+
+
+
+
+
+
+
+
+
+
+
