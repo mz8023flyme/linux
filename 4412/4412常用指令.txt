@@ -2,6 +2,16 @@ mount -t nfs -o nolock 192.168.31.228:/home/life/nfs /mnt
 
 
 
+export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/arm/4.3.2/bin
+
+
+
+gcc  -fexec-charset=UTF-8 -o example example.c -I /usr/local/include/freetype2 -lfreetype -lm
+
+
+/usr/local/arm/4.3.2/arm-none-linux-gnueabi/libc/usr/include 
+
+/usr/local/arm/4.3.2/arm-none-linux-gnueabi/libc/armv4t/lib
 
 
 
@@ -9,7 +19,5 @@ mount -t nfs -o nolock 192.168.31.228:/home/life/nfs /mnt
 
 
 
-
-
-
-
+export PATH=/usr/bin:/usr/local/arm/4.3.2/bin:$PATH
+ 30 export TOOLCHAIN=/usr/local/arm/4.3.2
