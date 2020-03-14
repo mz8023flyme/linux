@@ -1,6 +1,7 @@
-mount -t nfs -o nolock 192.168.31.228:/home/life/nfs /mnt
+mount -t nfs -o nolock 192.168.31.228:/home/life /mnt
 
-
+https://www.cnblogs.com/ljf181275034/articles/2775449.html
+启动nfs连接
 
 export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/arm/4.3.2/bin
 
@@ -17,7 +18,3 @@ gcc  -fexec-charset=UTF-8 -o example example.c -I /usr/local/include/freetype2 -
 
 
 
-
-
-export PATH=/usr/bin:/usr/local/arm/4.3.2/bin:$PATH
- 30 export TOOLCHAIN=/usr/local/arm/4.3.2
