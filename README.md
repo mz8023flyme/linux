@@ -11,4 +11,5 @@
 |  Linux   |      Linux系统编程      |
 |  Python  |       Python语法        |
 |  shell   |        shell编程        |
+|rasppberri|        树莓派相关       |
 
